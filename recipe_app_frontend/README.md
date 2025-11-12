@@ -1,16 +1,43 @@
-# React + Vite
+# Tizen Recipe App Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Tizen-ready recipe explorer built with React + Vite, styled with the Ocean Professional theme.
 
-Currently, two official plugins are available:
+- Runs in the existing container on port 3000
+- Works with keyboard/remote arrows, ENTER, and BACK
+- Includes: Home, Search, Favorites, Settings, and Recipe Detail
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Scripts
 
-## React Compiler
+- npm run dev — start dev server at port 3000
+- npm run build — production build
+- npm run preview — preview built app
+- npm run build:tizen — alias for build
+- npm run package:tizen — generate app.wgt from dist + config.xml
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Navigation
 
-## Expanding the ESLint configuration
+- Bottom nav has: Home, Search, Favorites, Settings
+- Use arrow keys to move focus in the grid
+- Press ENTER to open a recipe
+- In detail view: ENTER toggles Favorite; use Prev/Next to walk through steps
+- Press BACK to return (from detail to grid; from other tabs to Home)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Data
+
+- Mock data lives at src/data/recipes.js (10+ recipes)
+- Swappable with a real API later; keep the same shape: { id, title, description, image, time, difficulty, ingredients[], steps[] }
+
+## Favorites
+
+- Stored locally via localStorage under key "favorites"
+- Accessible in the Favorites tab
+
+## Tizen notes
+
+- Fixed viewport at 1920x1080 configured in index.html
+- Arrow keys, ENTER (13), and BACK (10009) handled in src/hooks/useTizenKeys.js
+
+## Style Guide
+
+- Ocean Professional: primary #2563EB, secondary/success #F59E0B, error #EF4444, background #f9fafb, surface #ffffff, text #111827
+- Subtle shadows, rounded corners, gradients for depth

@@ -1,9 +1,16 @@
 import { useEffect } from 'react';
 
+/**
+ * PUBLIC_INTERFACE
+ * useTizenKeys
+ * A hook to subscribe to Tizen remote/keyboard key events and call mapped handlers.
+ * Handlers: onLeft, onRight, onUp, onDown, onEnter, onBack
+ */
 export function useTizenKeys(handlers) {
   useEffect(() => {
     function handleKeyDown(e) {
-      switch (e.keyCode) {
+      const code = e?.keyCode ?? e?.which;
+      switch (code) {
         case 37: // LEFT
           handlers?.onLeft?.();
           e.preventDefault();
@@ -24,7 +31,8 @@ export function useTizenKeys(handlers) {
           handlers?.onEnter?.();
           e.preventDefault();
           break;
-        case 10009: // BACK
+        case 10009: // BACK (Tizen)
+        case 461: // Backspace/Back some remotes
           handlers?.onBack?.();
           e.preventDefault();
           break;
