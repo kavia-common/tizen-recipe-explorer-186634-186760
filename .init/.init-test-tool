@@ -1,0 +1,4 @@
+{
+    "command": "npm run build",
+    "working_directory": "/home/kavia/workspace/code-generation/tizen-recipe-explorer-186634-186760/recipe_app_frontend"
+}
